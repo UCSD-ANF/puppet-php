@@ -14,11 +14,21 @@ define php::config (
 ) {
   include 'php'
 
+  ### Class internal variables
+
+  if defined(Class['php::apache']) {
+    $manage_notify = Service['apache']
+  }
+
+  $manage_require = Package['php']
+
+  ### Mangaged resources
+
   file { "${php::phpinidir}/${name}.ini" :
     source  => $source,
     content => $content,
     ensure  => $ensure,
-    require => Package['php'],
-    notify  => Service['apache'],
+    require => $manage_require,
+    notify  => $manage_notify,
   }
 }
