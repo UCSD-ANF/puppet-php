@@ -14,6 +14,12 @@ class php {
 
       include php::redhat
     }
+    Solaris: {
+      $phpini = '/etc/opt/csw/php5/php.ini'
+      $phpinidir = '/etc/opt/csw/php5/conf.d'
+
+      include php::solaris
+    }
     default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
   }
 
