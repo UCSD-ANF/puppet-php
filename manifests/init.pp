@@ -17,6 +17,7 @@ class php {
     Solaris: {
       $phpini = '/etc/opt/csw/php5/php.ini'
       $phpinidir = '/etc/opt/csw/php5/conf.d'
+      Package { provider => 'pkgutil' }
 
       include php::solaris
     }

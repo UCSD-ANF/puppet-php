@@ -20,7 +20,7 @@ define php::config (
     $manage_notify = Service['apache']
   }
 
-  $manage_require = Package['php']
+  $manage_require =[ Package['php-cli'], File[$php::phpinidir] ]
 
   ### Mangaged resources
 
