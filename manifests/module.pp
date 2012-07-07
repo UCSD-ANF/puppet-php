@@ -8,6 +8,9 @@ define php::module ($ensure="present") {
     RedHat: {
       $phpprefix = "php-"
     }
+    Solaris: {
+      $phpprefix = 'php5_'
+    }
     default: { notice "Unsupported operatingsystem ${::operatingsystem}" }
   }
 
