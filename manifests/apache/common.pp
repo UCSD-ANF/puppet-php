@@ -1,6 +1,6 @@
 class php::apache::common inherits php {
 
-  if $::operatingsystem != Solaris {
+  if $::augeasversion {
     augeas { "default php.ini settings":
       context => "/files/${phpini}",
       changes => [
