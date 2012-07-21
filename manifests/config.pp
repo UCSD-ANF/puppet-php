@@ -20,15 +20,20 @@ define php::config (
     $manage_notify = Service['apache']
   }
 
-  $manage_require = Package['php']
+  $manage_require =[ Package['php-cli'], File[$php::phpinidir] ]
 
   ### Mangaged resources
 
-  file { "${php::phpinidir}/${name}.ini" :
-    source  => $source,
-    content => $content,
-    ensure  => $ensure,
-    require => $manage_require,
-    notify  => $manage_notify,
+  if $php::phpinidir {
+    file { "${php::phpinidir}/${name}.ini" :
+      source  => $source,
+      content => $content,
+      ensure  => $ensure,
+      require => $manage_require,
+      notify  => $manage_notify,
+    }
+
+  } else {
+    notify("php::config is not supported on ${::osfamily}")
   }
 }
