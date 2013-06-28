@@ -10,11 +10,11 @@ class php::solaris inherits php::common {
     owner   => 'root',
     group   => 'bin',
     mode    => '0755',
-    before  => File[ $phpinidir ],
+    before  => File[ $php::phpinidir ],
     require => Package ['php5'],
   }
 
-  File [ $phpinidir ] {
+  File [ $php::phpinidir ] {
     owner   => 'root',
     group   => 'bin',
     mode    => '0755',
