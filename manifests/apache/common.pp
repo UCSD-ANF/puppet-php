@@ -14,7 +14,7 @@ class php::apache::common inherits php {
     $manage_require = Augeas["default php.ini settings"]
   }
 
-  apache::module { "php5":
+  apache_anf::module { "php5":
     ensure  => present,
     require => $manage_require,
   }
